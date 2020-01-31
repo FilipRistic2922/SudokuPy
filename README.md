@@ -12,7 +12,7 @@
 
  In other to run it you will need Python 3 and following dependecies:
 
-  - pygame - Installed via command: `<pip3 install pygame>`
-  - pygame_menu - Installed via command: `<pip3 install pygame_menu>`
+  - pygame - Installed via command: `pip3 install pygame`
+  - pygame_menu - Installed via command: `pip3 install pygame_menu`
      
- After that just start script using command: `<python sudoku_app.py>`
+ After that just start script using command: `python sudoku_app.py`
