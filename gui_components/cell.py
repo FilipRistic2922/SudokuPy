@@ -1,6 +1,6 @@
 import pygame
 
-from gui.gui_util import get_font, BLACK, BLUE, GRAY
+from gui_components.gui_util import get_font, BLACK, BLUE, GRAY
 
 
 class Cell:

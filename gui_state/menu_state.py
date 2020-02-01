@@ -2,13 +2,13 @@ import pygame
 from pygame.locals import *
 import pygameMenu
 
-from game_state.game_state import GameState
+from gui_state.gui_state import GuiState
 
-from game_state.state_manager import StateManager
+from gui_state.state_manager import StateManager
 from sudoku.generator import SudokuLevel
 
 
-class MainMenu(GameState):
+class MainMenu(GuiState):
 
     def __init__(self, width, height, font: str, state_manager: StateManager):
         super().__init__('main_menu', state_manager)

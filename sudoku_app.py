@@ -3,9 +3,9 @@ import os
 
 import pygame
 
-from game_state.menu_state import MainMenu
-from game_state.play_game_state import PlayGame
-from game_state.state_manager import StateManager
+from gui_state.menu_state import MainMenu
+from gui_state.game_state import GameState
+from gui_state.state_manager import StateManager
 
 
 def main():
@@ -19,7 +19,7 @@ def main():
 
     state_manager = StateManager(win)
     main_menu = MainMenu(win_width, win_height, 'segoeuiblack', state_manager)
-    PlayGame(state_manager)
+    GameState(state_manager)
     state_manager.set_initial_state(main_menu.name)
 
     clock = pygame.time.Clock()

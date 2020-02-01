@@ -1,14 +1,14 @@
 import time
 
-from game_state.game_state import GameState
-from game_state.state_manager import StateManager
-from gui.grid import Grid
-from gui.gui_util import *
+from gui_state.gui_state import GuiState
+from gui_state.state_manager import StateManager
+from gui_components.grid import Grid
+from gui_components.gui_util import *
 from sudoku.solver import *
 from sudoku.generator import generate_board
 
 
-class PlayGame(GameState):
+class GameState(GuiState):
     solvers = [BacktrackingSolver(), ExactCoverSolver()]
 
     def __init__(self, state_manager: StateManager):

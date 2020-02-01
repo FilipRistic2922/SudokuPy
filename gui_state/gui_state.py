@@ -1,5 +1,5 @@
 
-class GameState:
+class GuiState:
     def __init__(self, name,  state_manager):
         self.name = name
         self.data_in = {}

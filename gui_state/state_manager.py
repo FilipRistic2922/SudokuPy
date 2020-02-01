@@ -1,4 +1,4 @@
-from game_state.game_state import GameState
+from gui_state.gui_state import GuiState
 
 
 class StateManager:
@@ -8,7 +8,7 @@ class StateManager:
         self.current_state = None
         self.quit = False
 
-    def add_state(self, state: GameState):
+    def add_state(self, state: GuiState):
         self.states[state.name] = state
 
     def set_initial_state(self, state_name: str):

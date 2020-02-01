@@ -2,8 +2,8 @@ from itertools import product
 
 import pygame
 
-from gui.cell import Cell
-from gui.gui_util import BLACK
+from gui_components.cell import Cell
+from gui_components.gui_util import BLACK
 
 
 class Grid:
