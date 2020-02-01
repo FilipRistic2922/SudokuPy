@@ -68,7 +68,7 @@ class TestSolver(unittest.TestCase):
          [7, 3, 1, 8, 5, 2, 6, 4, 9]]]
 
     #   Test for ExactCoverSolver
-    #   Solving all 3 bo
+    #   Solving all 3 boards takes between ~30ms
     def test_exact_cover_solver(self):
         solver = ExactCoverSolver()
 
@@ -80,6 +80,8 @@ class TestSolver(unittest.TestCase):
                 print("Solving Board {} took {} ms".format(i+1, round(time_end - time_start, 3)))
                 self.assertEqual(self.correct_solutions[i], solver_solution, "Solution doesn't match")
 
+    #   Test for BackTrackingSolver
+    #   Solving all 3 boards takes ~17s
     def test_back_tracking_solver(self):
         solver = BacktrackingSolver()
 
