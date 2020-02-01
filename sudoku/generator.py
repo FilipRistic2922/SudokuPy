@@ -1,6 +1,6 @@
 import random
 from enum import Enum
-from sudoku.sudoku_solver import ExactCoverSolver
+from sudoku.solver import ExactCoverSolver
 
 
 class SudokuLevel(Enum):

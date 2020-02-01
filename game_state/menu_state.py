@@ -5,7 +5,7 @@ import pygameMenu
 from game_state.game_state import GameState
 
 from game_state.state_manager import StateManager
-from sudoku.sudoku_generator import SudokuLevel
+from sudoku.generator import SudokuLevel
 
 
 class MainMenu(GameState):

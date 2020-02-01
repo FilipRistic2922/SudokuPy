@@ -4,8 +4,8 @@ from game_state.game_state import GameState
 from game_state.state_manager import StateManager
 from gui.grid import Grid
 from gui.gui_util import *
-from sudoku.sudoku_solver import *
-from sudoku.sudoku_generator import generate_board
+from sudoku.solver import *
+from sudoku.generator import generate_board
 
 
 class PlayGame(GameState):
