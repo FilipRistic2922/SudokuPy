@@ -75,6 +75,7 @@ class GameState(GuiState):
                 self.on_start(win)
             if 'click' in self.btn_reset.handleEvent(event) and not self.solving:
                 self.start_time = time.time()
+                self.solved = False
                 self.grid.reset()
             if 'click' in self.btn_solve.handleEvent(event):
                 if self.solving:
