@@ -5,7 +5,7 @@ import pygameMenu
 from gui_state.gui_state import GuiState
 
 from gui_state.state_manager import StateManager
-from sudoku.generator import SudokuLevel
+from sudoku.generator import Difficulty
 
 
 class MainMenu(GuiState):
@@ -18,7 +18,7 @@ class MainMenu(GuiState):
         self.menu = None
         self.win = None
         self.background_image = pygame.image.load("assets/menu_background.jpg").convert()
-        self.data_out = {"level": SudokuLevel.EASY, "solver_index": 0}
+        self.data_out = {"diff": Difficulty.EASY, "solver_index": 0}
 
     def on_start(self, win):
         self.win = win
@@ -40,11 +40,11 @@ class MainMenu(GuiState):
                                    selector_id="selector_solver",
                                    default=0,
                                    onchange=self.on_change_solver)
-            self.menu.add_selector("Level",
-                                   [("Easy", SudokuLevel.EASY),
-                                    ("Normal", SudokuLevel.NORMAL),
-                                    ("Hard", SudokuLevel.HARD),
-                                    ("Very Hard", SudokuLevel.VERY_HARD)],
+            self.menu.add_selector("Difficulty",
+                                   [("Easy", Difficulty.EASY),
+                                    ("Normal", Difficulty.NORMAL),
+                                    ("Hard", Difficulty.HARD),
+                                    ("Very Hard", Difficulty.VERY_HARD)],
                                    selector_id="selector_level",
                                    default=0,
                                    onchange=self.on_change_level)
@@ -61,7 +61,7 @@ class MainMenu(GuiState):
         self.data_out["solver_index"] = args[1]
 
     def on_change_level(self, *args, **kwargs):
-        self.data_out["level"] = args[1]
+        self.data_out["diff"] = args[1]
 
     def update(self, win, time_delta):
         events = pygame.event.get()

@@ -36,7 +36,7 @@ class GameState(GuiState):
         self.solved = False
 
     def on_start(self, win):
-        self.level = self.data_in["level"]
+        self.level = self.data_in["diff"]
         self.solver_index = self.data_in["solver_index"]
         self.solver = self.solvers[self.solver_index]
         self.board = generate_board(self.level)

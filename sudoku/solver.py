@@ -88,11 +88,12 @@ class BacktrackingSolver(SudokuSolver):
 
 class ExactCoverSolver(SudokuSolver):
 
-    def __init__(self):
+    def __init__(self, generator=False):
         super().__init__("Exact Cover")
         self.on_next_step = self._on_next_pass
         self.inner_grid_size = 3
         self.grid_size = 9
+        self.generator = generator
 
     def solve(self, board: [[]], on_next_step=None):
         new_solution = []
@@ -103,8 +104,12 @@ class ExactCoverSolver(SudokuSolver):
 
         for solution in self._solve(board_copy):
             new_solution += solution
-            if len(new_solution) == 9:
+            # Generator case should return first possible solution
+            if self.generator and len(new_solution) == 9:
                 return new_solution
+            # In solver case, if there are more possible solutions we return None since its illegal
+            if not self.generator and len(new_solution) > 9:
+                return None
         return new_solution
 
     def _solve(self, board: [[]]):

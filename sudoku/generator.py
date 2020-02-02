@@ -3,30 +3,37 @@ from enum import Enum
 from sudoku.solver import ExactCoverSolver
 
 
-class SudokuLevel(Enum):
-    EASY = 45
+class Difficulty(Enum):
+    EASY = 38
     NORMAL = 32
-    HARD = 25
-    VERY_HARD = 17
+    HARD = 28
+    VERY_HARD = 25
 
 
-def generate_board(level: SudokuLevel):
+def generate_board(difficulty: Difficulty):
+    generator = ExactCoverSolver(generator=True)
     solver = ExactCoverSolver()
 
     board = [_empty_row() for i in range(9)]
     random_row_index = random.randint(0, 8)
     board[random_row_index] = _randomize_row()
 
-    generated_board = solver.solve(board)
+    generated_board = generator.solve(board)
 
-    while _count_empty(generated_board) < 81 - level.value:
+    invalid_boards = 0
+
+    while _count_empty(generated_board) < 81 - difficulty.value:
         row, col, val = _remove_random_element(generated_board)
-
+        # Skip is value was already 0
+        if val == 0:
+            invalid_boards += 1
+            # We got bad rng try again from start
+            if invalid_boards == 80:
+                return generate_board(difficulty)
+            continue
         solved = solver.solve(generated_board)
-        count = _count_empty(solved)
-        if count != 0:
+        if not solved:
             generated_board[row][col] = val
-        # return emptied_board
     return generated_board
 
 
@@ -34,7 +41,8 @@ def _remove_random_element(board: [[]]):
     rand_row = random.randint(0, 8)
     rand_col = random.randint(0, 8)
     val = board[rand_row][rand_col]
-    board[rand_row][rand_col] = 0
+    if val != 0:
+        board[rand_row][rand_col] = 0
     return rand_row, rand_col, val
 
 
