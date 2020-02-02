@@ -31,6 +31,3 @@ class StateManager:
 
         self.quit = self.current_state.quit
 
-
-def running(self):
-    return not self.quit
