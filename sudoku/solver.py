@@ -56,7 +56,6 @@ class BacktrackingSolver(SudokuSolver):
         super().__init__("Backtracking")
         self.on_next_step = self._on_next_pass
 
-    # noinspection PyTypeChecker
     def solve(self, board: [[]], on_next_step=None):
 
         if on_next_step:
